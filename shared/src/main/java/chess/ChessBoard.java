@@ -11,10 +11,10 @@ import java.util.Objects;
  */
 public class ChessBoard {
 
-    private String[][] board;
+    private ChessPiece[][] board;
 
     public ChessBoard() {
-        board = new String[8][8];
+        board = new ChessPiece[8][8];
     }
 
     /**
@@ -24,7 +24,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-
+        board[position.getRow() - 1][position.getColumn() - 1] = piece;
     }
 
     /**
@@ -34,14 +34,16 @@ public class ChessBoard {
      * @return Either the piece at the position, or null if no piece is at that
      * position
      */
-    public ChessPiece getPiece(ChessPosition position) {throw new RuntimeException("Not implemented");}
+    public ChessPiece getPiece(ChessPosition position) {
+        return board[position.getRow() - 1][position.getColumn() - 1];
+    }
 
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+
     }
 
 
