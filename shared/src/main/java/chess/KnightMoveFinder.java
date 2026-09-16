@@ -17,11 +17,14 @@ public class KnightMoveFinder implements ChessMoveFinder {
             int colMove = move[1];
 
             ChessPosition newPosition = new ChessPosition(position.getRow() + rowMove, position.getColumn() + colMove);
-            if (board.getPiece(newPosition) == null) {
-                availableMoves.add(new ChessMove(position, newPosition, null));
-            } else {
-                if (board.getPiece(newPosition).getTeamColor() != knightColor) {
+
+            if (newPosition.getRow() >= 1 && newPosition.getRow() <= 8 && newPosition.getColumn() >= 1 && newPosition.getColumn() <= 8) {
+                if (board.getPiece(newPosition) == null) {
                     availableMoves.add(new ChessMove(position, newPosition, null));
+                } else {
+                    if (board.getPiece(newPosition).getTeamColor() != knightColor) {
+                        availableMoves.add(new ChessMove(position, newPosition, null));
+                    }
                 }
             }
         }

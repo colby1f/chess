@@ -38,16 +38,18 @@ public class PawnMoveFinder implements ChessMoveFinder {
             }
         }
         for (int move : colMove) {
-            if (board.getPiece(new ChessPosition(position.getRow() + rowMove, position.getColumn() - move)) != null) {
-                ChessPosition newPosition = new ChessPosition(position.getRow() + rowMove, position.getColumn() - move);
-                if (board.getPiece(newPosition).getTeamColor() != pawnColor) {
-                    if (newPosition.getRow() == promotion) {
-                        availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.QUEEN));
-                        availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.ROOK));
-                        availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.BISHOP));
-                        availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.KNIGHT));
-                    } else {
-                        availableMoves.add(new ChessMove(position, newPosition, null));
+            if (position.getColumn() + move >= 1 && position.getColumn() + move <= 8) {
+                if (board.getPiece(new ChessPosition(position.getRow() + rowMove, position.getColumn() + move)) != null) {
+                    ChessPosition newPosition = new ChessPosition(position.getRow() + rowMove, position.getColumn() + move);
+                    if (board.getPiece(newPosition).getTeamColor() != pawnColor) {
+                        if (newPosition.getRow() == promotion) {
+                            availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.QUEEN));
+                            availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.ROOK));
+                            availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.BISHOP));
+                            availableMoves.add(new ChessMove(position, newPosition, ChessPiece.PieceType.KNIGHT));
+                        } else {
+                            availableMoves.add(new ChessMove(position, newPosition, null));
+                        }
                     }
                 }
             }
