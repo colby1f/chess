@@ -45,18 +45,9 @@ public class ChessBoard {
     public void resetBoard() {
         board = new ChessPiece[8][8];
 
-        ChessPiece.PieceType[] first_row = {
-            ChessPiece.PieceType.ROOK,
-            ChessPiece.PieceType.KNIGHT,
-            ChessPiece.PieceType.BISHOP,
-            ChessPiece.PieceType.QUEEN,
-            ChessPiece.PieceType.KING,
-            ChessPiece.PieceType.BISHOP,
-            ChessPiece.PieceType.KNIGHT,
-            ChessPiece.PieceType.ROOK,
-        };
+        ChessPiece.PieceType[] first_row = {ChessPiece.PieceType.ROOK, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.KING, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.ROOK,};
 
-        for (int col = 0; col < 8; col++){
+        for (int col = 0; col < 8; col++) {
             board[0][col] = new ChessPiece(ChessGame.TeamColor.WHITE, first_row[col]);
             board[7][col] = new ChessPiece(ChessGame.TeamColor.BLACK, first_row[col]);
 
@@ -83,8 +74,6 @@ public class ChessBoard {
 
     @Override
     public String toString() {
-        return "ChessBoard{" +
-                "board=" + Arrays.toString(board) +
-                '}';
+        return "ChessBoard{" + "board=" + Arrays.toString(board) + '}';
     }
 }
